@@ -2,10 +2,17 @@ import React from 'react'
 import styled from 'styled-components'
 import { border, buttons } from '../../config/theme'
 
-const IconFace = () => (
-  <Wrapper>
+const Faces = {
+  smile: '😀',
+  surprised: '😮',
+  dead: '😵',
+  win: '😎'
+}
+
+const IconFace = ({ onClick }) => (
+  <Wrapper onClick={() => onClick()}>
     <span role='img' aria-label='face'>
-      😀
+      {Faces.smile}
     </span>
   </Wrapper>
 )
@@ -18,6 +25,5 @@ const Wrapper = styled.div`
   ${border()};
   ${buttons()};
 `
-
 
 export default IconFace

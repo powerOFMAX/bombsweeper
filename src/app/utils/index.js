@@ -53,5 +53,38 @@ export const generateCells = () => {
     }
   }
 
+  // Calculate Numbers
+  for (let rowIndex = 0; rowIndex < MAX_ROW; rowIndex += 1) {
+    for (let colIndex = 0; colIndex < MAX_COL; colIndex += 1) {
+      const currentCell = cells[rowIndex][colIndex]
+      // If the position has a bomb we don not need to do anything
+      if (currentCell.value === CellValue.bomb) continue
+
+      let numberOfBombs = 0
+      const topLeftBomb = rowIndex > 0 && colIndex > 0 ? cells[rowIndex - 1][colIndex - 1] : null
+      const topBomb = rowIndex > 0 ? cells[rowIndex - 1][colIndex] : null
+      const topRightBomb = rowIndex > 0 && colIndex < MAX_COL - 1 ? cells[rowIndex - 1][colIndex + 1] : null
+      const leftBomb = colIndex > 0 ? cells[rowIndex][colIndex - 1] : null
+      const rightBomb = colIndex < MAX_COL - 1 ? cells[rowIndex][colIndex + 1] : null
+      const bottomLeftBomb = rowIndex < MAX_ROW - 1 && colIndex > 0 ? cells[rowIndex + 1][colIndex - 1] : null
+      const bottomBomb = rowIndex < MAX_ROW - 1 ? cells[rowIndex + 1][colIndex] : null
+      const bottomRightBomb = rowIndex < MAX_ROW - 1 && colIndex < MAX_COL - 1 ? cells[rowIndex + 1][colIndex + 1] : null
+
+      if (topLeftBomb && topLeftBomb.value === CellValue.bomb) numberOfBombs += 1
+      if (topBomb && topBomb.value === CellValue.bomb) numberOfBombs += 1
+      if (topRightBomb && topRightBomb.value === CellValue.bomb) numberOfBombs += 1
+      if (leftBomb && leftBomb.value === CellValue.bomb) numberOfBombs += 1
+      if (rightBomb && rightBomb.value === CellValue.bomb) numberOfBombs += 1
+      if (bottomLeftBomb && bottomLeftBomb.value === CellValue.bomb) numberOfBombs += 1
+      if (bottomBomb && bottomBomb.value === CellValue.bomb) numberOfBombs += 1
+      if (bottomRightBomb && bottomRightBomb.value === CellValue.bomb) numberOfBombs += 1
+
+      if (numberOfBombs > 0) {
+        cells[rowIndex][colIndex] = { ...currentCell, value: numberOfBombs }
+      }
+    }
+  }
+
+
   return cells
 }

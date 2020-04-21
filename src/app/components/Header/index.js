@@ -2,9 +2,9 @@ import React from 'react'
 import styled from 'styled-components'
 import { border } from '../../config/theme'
 
-export const Header = (props) => (
+export const Header = ({ children }) => (
   <Wrapper>
-    {props.children}
+    {children}
   </Wrapper>
 )
 
