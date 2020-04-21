@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
-export const Display = ({ value, isLive }) => {
+export const Display = ({ value, hasLost, isLive, hasWon }) => {
   const [time, setTime] = useState(0)
 
   useEffect(() => {
+    if (hasLost || hasWon) return
+
     if (isLive && time < 999) {
       const timer = setInterval(() => {
         setTime(time + 1)

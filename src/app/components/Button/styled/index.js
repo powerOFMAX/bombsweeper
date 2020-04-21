@@ -11,16 +11,18 @@ export const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   font-weight: bold;
+  font-size: 20px;
 
   ${(props) => props.isVisible && `
-    border-color: ${(props) => props.theme.colors.gray};
+    border-color: ${props.theme.colors.gray};
     border-width: 1px;
+    padding: 3px;
     // margin-left: 3px;
   `};
 
-  span {
-    font-size: 20px;
-  }
+  ${(props) => props.isRed && `
+    background-color: red;
+  `}
 
   &.value-1 {
     color: blue;

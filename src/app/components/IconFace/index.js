@@ -10,13 +10,22 @@ const Faces = {
   win: '😎'
 }
 
-const IconFace = ({ onClick }) => (
-  <Wrapper onClick={() => onClick()}>
-    <span role='img' aria-label='face'>
-      {Faces.smile}
-    </span>
-  </Wrapper>
-)
+const IconFace = ({ onClick, hasLost, hasWon }) => {
+  function returnFace() {
+    if (hasWon) return Faces.win
+    if (hasLost) return Faces.dead
+    return Faces.smile
+  }
+
+  return (
+    <Wrapper onClick={() => onClick()}>
+      <span role='img' aria-label='face'>
+        {returnFace()}
+      </span>
+    </Wrapper>
+  )
+}
+
 
 IconFace.propTypes = {
   onClick: PropTypes.func.isRequired

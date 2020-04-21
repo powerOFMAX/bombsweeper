@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Wrapper } from './styled'
 import { CellState, CellValue } from '../../utils'
 
-const Button = ({ row, col, state, value, onClick, onContext }) => {
+const Button = ({ row, col, state, value, onClick, onContext, isRed }) => {
   const renderContent = () => {
     if (state === CellState.visible) {
       if (value === CellValue.bomb) {
@@ -23,6 +23,7 @@ const Button = ({ row, col, state, value, onClick, onContext }) => {
       onClick={() => onClick(row, col)}
       isVisible={state === CellState.visible}
       className={`value-${value}`}
+      isRed={isRed}
       onContextMenu={onContext(row, col)}
     >
       {renderContent()}
