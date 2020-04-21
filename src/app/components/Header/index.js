@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { border } from '../../config/theme'
 
@@ -8,10 +9,14 @@ export const Header = ({ children }) => (
   </Wrapper>
 )
 
+Header.propTypes = {
+  children: PropTypes.any
+}
+
 const Wrapper = styled.div`
-  background: #c0c0c0;
+  background: ${(props) => props.theme.colors.grayBackground};
   padding: 10px 12px;
-  ${border('#7b7b7b', 'white')};
+  ${border((props) => props.theme.colors.gray, 'white')};
   display: flex;
   text-align: center;
   align-items: center;

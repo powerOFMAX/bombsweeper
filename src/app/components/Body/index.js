@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Wrapper } from './components/styled'
 import Button from '../Button'
 
@@ -17,5 +18,11 @@ export const Body = ({ cells, onClick, onContext }) => (
     )))}
   </Wrapper>
 )
+
+Body.propTypes = {
+  cells: PropTypes.array,
+  onClick: PropTypes.func.isRequired,
+  onContext: PropTypes.func.isRequired
+}
 
 export default Body

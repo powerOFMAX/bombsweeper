@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { border, buttons } from '../../config/theme'
 
@@ -16,6 +17,10 @@ const IconFace = ({ onClick }) => (
     </span>
   </Wrapper>
 )
+
+IconFace.propTypes = {
+  onClick: PropTypes.func.isRequired
+}
 
 const Wrapper = styled.div`
   width: 35px;
