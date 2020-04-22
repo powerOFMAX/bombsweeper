@@ -1,5 +1,13 @@
 import { css } from 'styled-components'
 
+export const theme = {
+  colors: {
+    gray: '#7b7b7b',
+    grayBackground: '#c0c0c0',
+    displayRed: '#ff0701'
+  }
+}
+
 export const border = (leftTop = 'white', rightBottom = theme.colors.gray) => css`
   border-width: 4px;
   border-style: solid;
@@ -17,11 +25,3 @@ export const buttons = () => css`
     border-top-color: ${(props) => props.theme.colors.gray};
   }
 `
-
-export const theme = {
-  colors: {
-    gray: '#7b7b7b',
-    grayBackground: '#c0c0c0',
-    displayRed: '#ff0701'
-  }
-}

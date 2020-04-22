@@ -4,20 +4,21 @@ import { Body } from '../../components/Body'
 import { Header } from '../../components/Header'
 import { Display } from '../../components/Display'
 import IconFace from '../../components/IconFace'
-import { generateCells } from '../../utils/index'
+import { generateCells, NUMBER_OF_BOMBS } from '../../utils/index'
 
 export const Game = () => {
   const [cells, setCells] = useState(generateCells())
   const [live, setLive] = useState(false)
-  const [bombCounter, setBombCounter] = useState(10)
+  const [bombCounter, setBombCounter] = useState(NUMBER_OF_BOMBS)
   const [hasLost, setHasLost] = useState(false)
   const [hasWon, setHasWon] = useState(false)
 
   const handleFaceClick = () => {
     setLive(false)
     setHasLost(false)
+    setHasWon(false)
     setCells(generateCells())
-    setBombCounter(10)
+    setBombCounter(NUMBER_OF_BOMBS)
   }
 
   return (

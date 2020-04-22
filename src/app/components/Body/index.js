@@ -2,9 +2,25 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Wrapper } from './components/styled'
 import Button from '../Button'
-import { CellValue, CellState, makeCellsVisible, setFlagsToBoard, checkIfHasSafeCells } from '../../utils'
+import {
+  CellValue,
+  CellState,
+  makeCellsVisible,
+  setFlagsToBoard,
+  checkIfHasSafeCells,
+  generateCells
+} from '../../utils'
 
-export const Body = ({ cells, setCells, live, setLive, setHasLost, bombCounter, setBombCounter, setHasWon }) => {
+export const Body = ({
+  cells,
+  setCells,
+  live,
+  setLive,
+  setHasLost,
+  bombCounter,
+  setBombCounter,
+  setHasWon
+}) => {
   const showAllBombs = () => {
     const currentCells = cells.slice()
     return currentCells.map((row) => row.map((cell) => {
@@ -16,10 +32,22 @@ export const Body = ({ cells, setCells, live, setLive, setHasLost, bombCounter, 
   }
 
   const handleClick = (row, col) => {
-    if (!live) setLive(true) // We don't click on a bomb in the beginning
-
-    const currentCell = cells[row][col]
     let newCells = cells.slice()
+
+    // We don't click on a bomb in the beginning
+    if (!live) {
+      let isABomb = newCells[row][col].value === CellValue.bomb
+      while (isABomb) {
+        newCells = generateCells()
+        if (newCells[row][col].value !== CellValue.bomb) {
+          isABomb = false
+          break
+        }
+      }
+      setLive(true)
+    }
+
+    const currentCell = newCells[row][col]
 
     // If we click on a flag don't do anything
     if ([CellState.flag, CellState.visible].includes(currentCell.state)) return
