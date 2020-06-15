@@ -37,7 +37,8 @@ Button.propTypes = {
   state: PropTypes.number,
   value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   onClick: PropTypes.func.isRequired,
-  onContext: PropTypes.func.isRequired
+  onContext: PropTypes.func.isRequired,
+  isRed: PropTypes.bool
 }
 
 export default Button

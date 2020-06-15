@@ -35,7 +35,9 @@ export const Display = ({ value, hasLost, isLive, hasWon }) => {
 
 Display.propTypes = {
   value: PropTypes.number,
-  isLive: PropTypes.bool
+  isLive: PropTypes.bool,
+  hasLost: PropTypes.bool,
+  hasWon: PropTypes.bool
 }
 
 const Wrapper = styled.div`

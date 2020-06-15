@@ -123,7 +123,14 @@ export const Body = ({
 }
 
 Body.propTypes = {
-  cells: PropTypes.array
+  cells: PropTypes.array,
+  setHasLost: PropTypes.func,
+  bombCounter: PropTypes.number,
+  setBombCounter: PropTypes.func,
+  setCells: PropTypes.func,
+  live: PropTypes.bool,
+  setLive: PropTypes.func,
+  setHasWon: PropTypes.func
 }
 
 export default Body

@@ -41,6 +41,9 @@ module.exports = {
     "jsx-a11y/no-static-element-interactions": "off",
     "no-case-declarations": "off",
     "eqeqeq": "off",
-    "no-param-reassign": 0
+    "no-param-reassign": 0,
+    "no-continue": "off",
+    "react/no-array-index-key": "off",
+    "consistent-return": "off"
   },
 };

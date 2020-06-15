@@ -28,7 +28,9 @@ const IconFace = ({ onClick, hasLost, hasWon }) => {
 
 
 IconFace.propTypes = {
-  onClick: PropTypes.func.isRequired
+  onClick: PropTypes.func.isRequired,
+  hasLost: PropTypes.bool,
+  hasWon: PropTypes.bool
 }
 
 const Wrapper = styled.div`
